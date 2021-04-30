@@ -1,6 +1,6 @@
 version: 2.1
 
-docker-def: &docker
+docker-def: &docker-def
     docker:
       - image: circleci/node:13.8.0
 
