@@ -4,30 +4,18 @@ docker-def: &docker-def
     docker:
       - image: circleci/node:13.8.0
 
-jobs:
-  save_hello_world_output:
-    <<: *docker-def
+commands:
+  print-pl:
     steps:
-      - run: echo "Hello benny" > ~/output.txt
-      - persist_to_workspace:
-          root: ~/
-          paths: 
-            - output.txt
-  
-  print_output_file:
-    <<: *docker-def
-    steps: 
-      - attach_workspace:
-          at: ~/
-      - run: cat ~/output.txt
+      - run: echo << pipeline.id >>
 
+jobs:
+  print_pipeline_id:
+    steps:
+      - print-pl
 
 workflows:
   workspace-demo:
     jobs: 
-      - save_hello_world_output
-      - print_output_file:
-          requires:
-            - save_hello_world_output
-
+      - print_pipeline_id
 
