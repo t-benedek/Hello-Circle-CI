@@ -1,0 +1,22 @@
+version: 2.1
+
+docker-def: &docker-def
+    docker:
+      - image: circleci/node:13.8.0
+
+commands:
+  print-pl:
+    steps:
+      - run: echo << pipeline.id >>
+
+jobs:
+  print_pipeline_id:
+    <<: *docker-def
+    steps:
+      - print-pl
+
+workflows:
+  workspace-demo:
+    jobs: 
+      - print_pipeline_id
+
