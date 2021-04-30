@@ -1,25 +1,30 @@
 version: 2.1
 
 jobs:
-  print_hello:
-    docker:
-      - image: circleci/node:13.8.0
-    environment:
-      RAIN: red
-    steps:
-      - run: 
-          command: echo $myname
-  print_world:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "pipeline id << pipeline.id >> git branch  << pipeline.git.branch >>."
-      - run: echo "pl.number <<pipeline.number>> Git URL <<pipeline.project.git_url>> Project Type <<pipeline.project.type>>"
+      - run: echo "text to output here" > output.txt
+        - persist_to_workspace:
+            root: /tmp
+            paths: 
+              - output.txt
+  
+  print_output_file:
+    docker:
+      - image: circleci/node:13.8.0
+    steps: 
+      -run: less output.txt
+        - attach_workspace:
+            at: /tmp
 
 workflows:
-  welcome:
-    jobs:
-      - print_hello
-      - print_world:
+  workspace-demo:
+    jobs: 
+      - save_hello_world_output
+      - print_output_file:
           requires:
-            - print_hello 
+            - save_hello_world_output
+
+
