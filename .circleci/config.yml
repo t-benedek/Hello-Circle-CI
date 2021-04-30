@@ -7,9 +7,9 @@ jobs:
     steps:
       - run: echo "text to output here" > output.txt
       - persist_to_workspace:
-          root: ~/
+          root: .
           paths: 
-            - output.txt
+            - .
   
   print_output_file:
     docker:
@@ -17,7 +17,7 @@ jobs:
     steps: 
       - run: less output.txt
       - attach_workspace:
-          at: ~/
+          at: .
 
 workflows:
   workspace-demo:
