@@ -6,7 +6,6 @@ docker-def: &docker-def
 
 commands:
   print-pl:
-    <<: *docker-def
     steps:
       - run: echo << pipeline.id >>
 
