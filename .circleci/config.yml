@@ -8,8 +8,7 @@ jobs:
       RAIN: red
     steps:
       - run: 
-          command: echo $RAIN
-          command: echo $RAIN
+          command: echo $CIRCLE_BRANCH
   print_world:
     docker:
       - image: circleci/node:13.8.0
