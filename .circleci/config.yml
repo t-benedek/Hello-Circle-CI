@@ -6,9 +6,9 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: 
-        command: echo $RAIN
-        environment: 
-          RAIN: purple
+          command: echo $RAIN
+          environment: 
+            RAIN: purple
 
   print_world:
     docker:
