@@ -4,6 +4,8 @@ jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
+    environment:
+      RAIN: red
     steps:
       - run: 
           command: echo $RAIN
