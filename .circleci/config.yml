@@ -8,7 +8,7 @@ jobs:
   save_hello_world_output:
     <<: *docker-def
     steps:
-      - run: echo "Hello benny" > output.txt
+      - run: echo "Hello benny" > ~/output.txt
       - persist_to_workspace:
           root: ~/
           paths: 
