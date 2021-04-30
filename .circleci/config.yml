@@ -10,7 +10,7 @@ jobs:
       - run: echo "text to output here" > output.txt
       - run: ls
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths: 
             - output.txt
   
@@ -20,9 +20,9 @@ jobs:
     steps: 
       - run: pwd
       - run: ls
-      - run: cat ../output.txt
+      - run: cat ~/output.txt
       - attach_workspace:
-          at: .
+          at: ~/
 
 workflows:
   workspace-demo:
