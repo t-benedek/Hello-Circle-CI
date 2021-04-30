@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Print Hello
           command: |
-            echo "Hello"
+            echo "Hello "
   
   print_world:
     docker:
@@ -31,4 +31,6 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      # - welcome/run
+      - print_hello
+      - print_world
