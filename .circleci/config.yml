@@ -6,8 +6,9 @@ docker-def: &docker
 
 jobs:
   save_hello_world_output:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *docker-def
+    # docker:
+    #   - image: circleci/node:13.8.0
     steps:
       - run: pwd
       - run: ls
