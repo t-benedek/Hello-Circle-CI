@@ -1,5 +1,9 @@
 version: 2.1
 
+docker-def: &docker
+    docker:
+      - image: circleci/node:13.8.0
+
 jobs:
   save_hello_world_output:
     docker:
