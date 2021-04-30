@@ -10,7 +10,8 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>."
+      - run: echo "pipeline id << pipeline.id >> git branch  << pipeline.git.branch >>."
+      - run: echo "pl.number <<pipeline.number>> Git URL <<pipeline.project.git_url>> Project Type <<pipeline.project.type>>"
 
 workflows:
   welcome:
