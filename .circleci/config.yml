@@ -6,11 +6,13 @@ docker-def: &docker-def
 
 commands:
   print-pl:
+    <<: *docker-def
     steps:
       - run: echo << pipeline.id >>
 
 jobs:
   print_pipeline_id:
+    <<: *docker-def
     steps:
       - print-pl
 
