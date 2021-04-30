@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: echo "text to output here" > output.txt
       - persist_to_workspace:
-          root: /tmp
+          root: ~/
           paths: 
             - output.txt
   
@@ -17,7 +17,7 @@ jobs:
     steps: 
       - run: less output.txt
       - attach_workspace:
-          at: /tmp
+          at: ~/
 
 workflows:
   workspace-demo:
