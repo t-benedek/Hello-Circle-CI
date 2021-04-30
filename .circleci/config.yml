@@ -15,7 +15,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps: 
-      -run: less output.txt
+      - run: less output.txt
       - attach_workspace:
           at: /tmp
 
