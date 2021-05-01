@@ -4,19 +4,18 @@ docker-def: &docker-def
     docker:
       - image: circleci/node:13.8.0
 
-commands:
-  print-pl:
-    steps:
-      - run: echo << pipeline.id >>
-
 jobs:
-  print_pipeline_id:
+  error-job:
     <<: *docker-def
     steps:
-      - print-pl
+      - run: return 1
+      - run: 
+          name: Exeption handling
+          command: echo "Hello Error ! "
+          when: on_fail
 
 workflows:
-  workspace-demo:
+  error-demo:
     jobs: 
-      - print_pipeline_id
+      - error-job
 
