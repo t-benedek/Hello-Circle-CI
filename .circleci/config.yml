@@ -1,0 +1,21 @@
+version: 2.1
+
+docker-def: &docker-def
+    docker:
+      - image: circleci/node:13.8.0
+
+jobs:
+  error-job:
+    <<: *docker-def
+    steps:
+      - run: return 1
+      - run: 
+          name: Exeption handling
+          command: echo "Hello Error ! "
+          when: on_fail
+
+workflows:
+  error-demo:
+    jobs: 
+      - error-job
+
